@@ -24,11 +24,11 @@
       |    - Rebuild or perish       |
       |                               |
       |    Mission begins at         |
-      | [43.65107, -79.347015]       |
+      | [37°24'05.7"N 116°52'04.1"W] |
       -------------------------------
 
 Hey, the time you're reading this message, the world has collapsed,
 and there are no signs of human life left. However, you can go to
-[43.65107, -79.347015] and your new task will begin there.
+[37°24'05.7"N 116°52'04.1"W] and your new task will begin there.
 Your mission is to survive and revive what is left of humanity in a dystopian society,
 where every choice is a struggle, and hope is the only thing left to cling to.
