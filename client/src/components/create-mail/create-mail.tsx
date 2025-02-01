@@ -3,22 +3,28 @@ import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { AnchorProvider, Program } from "@coral-xyz/anchor";
 import { IDL } from "../../anchor/idl";
+import { local_account_1 } from "../../App";
+import { LocalWalletAdapter } from "../../local-wallet-adapter";
 
 export default function CreateMail() {
   const [message, setMessage] = useState("");
   const [unlockAfter, setUnlockAfter] = useState(1);
   const wallet = useAnchorWallet();
   const { connection } = useConnection();
+  // for localhost otherwise use wallet
+  // const wallet = useAnchorWallet();
+  const local_wallet_1 = new LocalWalletAdapter(local_account_1());
 
   const getProvider = () => {
-    if (!wallet) return null;
     const connection = new Connection(
-      "https://api.devnet.solana.com",
+      // "https://api.devnet.solana.com",
+      "http://127.0.0.1:8899",
       "processed"
     );
-    return new AnchorProvider(connection, wallet, {
+    const provider = new AnchorProvider(connection, local_wallet_1, {
       preflightCommitment: "processed",
     });
+    return provider;
   };
 
   const createMail = async () => {
@@ -26,6 +32,9 @@ export default function CreateMail() {
     if (!provider) return console.error("Provider not initialized");
 
     const program = new Program(IDL, provider);
+    // do on localhost
+    // const tx = await program.methods.initialize().rpc();
+    // console.log("Mail account initialized:", tx);
     try {
       const tx = await program.methods.create(message, unlockAfter).rpc();
       console.log("Transaction:", tx);
