@@ -41,6 +41,7 @@ export default function CreateMail() {
     } catch (err) {
       console.error("Error creating mail:", err);
     }
+    fetch()
   };
 
   const fetch = async () => {
