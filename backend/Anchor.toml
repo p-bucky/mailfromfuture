@@ -7,11 +7,14 @@ skip-lint = false
 [programs.localnet]
 mailfromfuture = "BZ46sZ2iejuwJjZ7Ga4P7B8y7EDXmAWpKjHAAowufAg8"
 
+[programs.devnet]
+mailfromfuture = "BZ46sZ2iejuwJjZ7Ga4P7B8y7EDXmAWpKjHAAowufAg8"
+
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

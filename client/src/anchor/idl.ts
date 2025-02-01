@@ -1,199 +1,285 @@
 export type Mailfromfuture = {
-  address: "BZ46sZ2iejuwJjZ7Ga4P7B8y7EDXmAWpKjHAAowufAg8";
-  metadata: {
-    name: "mailfromfuture";
-    version: "0.1.0";
-    spec: "0.1.0";
-    description: "Created with Anchor";
-  };
-  instructions: [
+  "address": "BZ46sZ2iejuwJjZ7Ga4P7B8y7EDXmAWpKjHAAowufAg8",
+  "metadata": {
+    "name": "mailfromfuture",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
     {
-      name: "create";
-      discriminator: [24, 30, 200, 40, 5, 28, 7, 119];
-      accounts: [
+      "name": "create",
+      "discriminator": [
+        24,
+        30,
+        200,
+        40,
+        5,
+        28,
+        7,
+        119
+      ],
+      "accounts": [
         {
-          name: "mail";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "mail",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [99, 111, 117, 110, 116, 101, 114];
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  101,
+                  114
+                ]
               }
-            ];
-          };
+            ]
+          }
         }
-      ];
-      args: [
+      ],
+      "args": [
         {
-          name: "text";
-          type: "string";
+          "name": "text",
+          "type": "string"
         },
         {
-          name: "unlockAfter";
-          type: "u16";
+          "name": "unlockAfter",
+          "type": "u16"
         }
-      ];
+      ]
     },
     {
-      name: "initialize";
-      discriminator: [175, 175, 109, 31, 13, 152, 155, 237];
-      accounts: [
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
         {
-          name: "user";
-          writable: true;
-          signer: true;
+          "name": "user",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "mail";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "mail",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [99, 111, 117, 110, 116, 101, 114];
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  101,
+                  114
+                ]
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
-      ];
-      args: [];
+      ],
+      "args": []
     }
-  ];
-  accounts: [
+  ],
+  "accounts": [
     {
-      name: "mail";
-      discriminator: [196, 146, 111, 84, 164, 209, 23, 235];
+      "name": "mail",
+      "discriminator": [
+        196,
+        146,
+        111,
+        84,
+        164,
+        209,
+        23,
+        235
+      ]
     }
-  ];
-  types: [
+  ],
+  "types": [
     {
-      name: "mail";
-      type: {
-        kind: "struct";
-        fields: [
+      "name": "mail",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
-            name: "text";
-            type: "string";
+            "name": "text",
+            "type": "string"
           },
           {
-            name: "unlockAfter";
-            type: "u16";
+            "name": "unlockAfter",
+            "type": "u16"
           },
           {
-            name: "createdAt";
-            type: "i64";
+            "name": "createdAt",
+            "type": "i64"
           },
           {
-            name: "bump";
-            type: "u8";
+            "name": "bump",
+            "type": "u8"
           }
-        ];
-      };
+        ]
+      }
     }
-  ];
+  ]
 };
 
 export const IDL: Mailfromfuture = {
-  address: "BZ46sZ2iejuwJjZ7Ga4P7B8y7EDXmAWpKjHAAowufAg8",
-  metadata: {
-    name: "mailfromfuture",
-    version: "0.1.0",
-    spec: "0.1.0",
-    description: "Created with Anchor",
+  "address": "BZ46sZ2iejuwJjZ7Ga4P7B8y7EDXmAWpKjHAAowufAg8",
+  "metadata": {
+    "name": "mailfromfuture",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
   },
-  instructions: [
+  "instructions": [
     {
-      name: "create",
-      discriminator: [24, 30, 200, 40, 5, 28, 7, 119],
-      accounts: [
+      "name": "create",
+      "discriminator": [
+        24,
+        30,
+        200,
+        40,
+        5,
+        28,
+        7,
+        119
+      ],
+      "accounts": [
         {
-          name: "mail",
-          writable: true,
-          pda: {
-            seeds: [
+          "name": "mail",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const",
-                value: [99, 111, 117, 110, 116, 101, 114],
-              },
-            ],
-          },
-        },
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  101,
+                  114
+                ]
+              }
+            ]
+          }
+        }
       ],
-      args: [
+      "args": [
         {
-          name: "text",
-          type: "string",
+          "name": "text",
+          "type": "string"
         },
         {
-          name: "unlock_after",
-          type: "u16",
-        },
-      ],
+          "name": "unlock_after",
+          "type": "u16"
+        }
+      ]
     },
     {
-      name: "initialize",
-      discriminator: [175, 175, 109, 31, 13, 152, 155, 237],
-      accounts: [
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
         {
-          name: "user",
-          writable: true,
-          signer: true,
+          "name": "user",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "mail",
-          writable: true,
-          pda: {
-            seeds: [
+          "name": "mail",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const",
-                value: [99, 111, 117, 110, 116, 101, 114],
-              },
-            ],
-          },
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  101,
+                  114
+                ]
+              }
+            ]
+          }
         },
         {
-          name: "system_program",
-          address: "11111111111111111111111111111111",
-        },
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
       ],
-      args: [],
-    },
+      "args": []
+    }
   ],
-  accounts: [
+  "accounts": [
     {
-      name: "Mail",
-      discriminator: [196, 146, 111, 84, 164, 209, 23, 235],
-    },
+      "name": "Mail",
+      "discriminator": [
+        196,
+        146,
+        111,
+        84,
+        164,
+        209,
+        23,
+        235
+      ]
+    }
   ],
-  types: [
+  "types": [
     {
-      name: "Mail",
-      type: {
-        kind: "struct",
-        fields: [
+      "name": "Mail",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
-            name: "text",
-            type: "string",
+            "name": "text",
+            "type": "string"
           },
           {
-            name: "unlock_after",
-            type: "u16",
+            "name": "unlock_after",
+            "type": "u16"
           },
           {
-            name: "created_at",
-            type: "i64",
+            "name": "created_at",
+            "type": "i64"
           },
           {
-            name: "bump",
-            type: "u8",
-          },
-        ],
-      },
-    },
-  ],
-};
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
