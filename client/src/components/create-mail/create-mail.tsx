@@ -3,7 +3,7 @@ import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { AnchorProvider, Program } from "@coral-xyz/anchor";
 import { IDL } from "../../anchor/idl";
-import { local_account_1 } from "../../App";
+import { local_account } from "../../App";
 import { LocalWalletAdapter } from "../../local-wallet-adapter";
 
 export default function CreateMail() {
@@ -11,9 +11,10 @@ export default function CreateMail() {
   const [unlockAfter, setUnlockAfter] = useState(1);
   const wallet = useAnchorWallet();
   const { connection } = useConnection();
+  const [dataList, setDataList] = useState([]);
   // for localhost otherwise use wallet
   // const wallet = useAnchorWallet();
-  const local_wallet_1 = new LocalWalletAdapter(local_account_1());
+  const local_wallet = new LocalWalletAdapter(local_account());
 
   const getProvider = () => {
     const connection = new Connection(
@@ -21,7 +22,7 @@ export default function CreateMail() {
       "http://127.0.0.1:8899",
       "processed"
     );
-    const provider = new AnchorProvider(connection, local_wallet_1, {
+    const provider = new AnchorProvider(connection, local_wallet, {
       preflightCommitment: "processed",
     });
     return provider;
@@ -36,12 +37,17 @@ export default function CreateMail() {
     // const tx = await program.methods.initialize().rpc();
     // console.log("Mail account initialized:", tx);
     try {
-      const tx = await program.methods.create(message, unlockAfter).rpc();
-      console.log("Transaction:", tx);
+      const tx = await program.methods
+        .create(`${Math.random()}`, 5)
+        .accounts({
+          signer: local_account()?.publicKey,
+        })
+        .rpc();
+      console.log("Transaction create:", tx);
     } catch (err) {
       console.error("Error creating mail:", err);
     }
-    fetch()
+    fetch();
   };
 
   const fetch = async () => {
@@ -60,10 +66,17 @@ export default function CreateMail() {
         return;
       }
 
+      let dataArr = [];
       for (const account of accounts) {
-        const data = await program.account.mail.fetch(account.pubkey);
+        const data = await program.account.mail
+          .fetch(account.pubkey)
+          .catch(() => {});
+        dataArr = [...dataArr, data];
         console.log("Fetched data:", data);
       }
+      dataArr = dataArr?.filter((_) => _);
+      setDataList(dataArr);
+      // console.log(dataArr)
     } catch (err) {
       console.error("Fetch error:", err);
     }
@@ -111,6 +124,22 @@ export default function CreateMail() {
       >
         Create
       </button>
+
+      <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-xl">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          Feature List {dataList?.length}
+        </h2>
+        <ul className="space-y-3">
+          {dataList?.map((data, index) => (
+            <li
+              key={index}
+              className="flex items-center p-3 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition"
+            >
+              <span className="text-gray-700">{data.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

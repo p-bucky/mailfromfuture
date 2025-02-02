@@ -29,7 +29,7 @@ export const Wallet = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const local_account_1 = () => {
+const local_account_1 = () => {
   const secretKey = Uint8Array.from([
     56, 215, 208, 54, 6, 173, 166, 253, 35, 73, 161, 89, 232, 64, 210, 74, 37,
     249, 131, 240, 230, 20, 15, 228, 173, 50, 222, 220, 241, 116, 107, 51, 145,
@@ -39,7 +39,7 @@ export const local_account_1 = () => {
   return Keypair.fromSecretKey(secretKey);
 };
 
-export const local_account_2 = () => {
+const local_account_2 = () => {
   const secretKey = Uint8Array.from([
     89, 81, 101, 209, 170, 56, 61, 134, 135, 240, 47, 33, 118, 107, 140, 111,
     135, 82, 2, 32, 250, 163, 206, 79, 67, 191, 124, 164, 174, 174, 35, 241, 15,
@@ -49,6 +49,15 @@ export const local_account_2 = () => {
   return Keypair.fromSecretKey(secretKey);
 };
 
+export const local_account = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get("account") && urlParams.get("account") == 1){
+    return local_account_1()
+  }
+  if(urlParams.get("account") && urlParams.get("account") == 2){
+    return local_account_2()
+  }
+}
 function App() {
   return (
     <Wallet>

@@ -21,6 +21,27 @@ export type Mailfromfuture = {
       ],
       "accounts": [
         {
+          "name": "user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
           "name": "mail",
           "writable": true,
           "pda": {
@@ -28,17 +49,32 @@ export type Mailfromfuture = {
               {
                 "kind": "const",
                 "value": [
-                  99,
-                  111,
-                  117,
-                  110,
-                  116,
-                  101,
-                  114
+                  109,
+                  97,
+                  105,
+                  108
                 ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "account",
+                "path": "user.mail_count",
+                "account": "user"
               }
             ]
           }
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
@@ -66,26 +102,27 @@ export type Mailfromfuture = {
       ],
       "accounts": [
         {
-          "name": "user",
+          "name": "signer",
           "writable": true,
           "signer": true
         },
         {
-          "name": "mail",
+          "name": "user",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  99,
-                  111,
                   117,
-                  110,
-                  116,
+                  115,
                   101,
                   114
                 ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
               }
             ]
           }
@@ -111,6 +148,19 @@ export type Mailfromfuture = {
         23,
         235
       ]
+    },
+    {
+      "name": "user",
+      "discriminator": [
+        159,
+        117,
+        95,
+        227,
+        239,
+        151,
+        58,
+        236
+      ]
     }
   ],
   "types": [
@@ -134,12 +184,33 @@ export type Mailfromfuture = {
           {
             "name": "bump",
             "type": "u8"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "user",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "mailCount",
+            "type": "u64"
           }
         ]
       }
     }
   ]
 };
+
 
 export const IDL: Mailfromfuture = {
   "address": "BZ46sZ2iejuwJjZ7Ga4P7B8y7EDXmAWpKjHAAowufAg8",
@@ -164,6 +235,27 @@ export const IDL: Mailfromfuture = {
       ],
       "accounts": [
         {
+          "name": "user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
           "name": "mail",
           "writable": true,
           "pda": {
@@ -171,17 +263,32 @@ export const IDL: Mailfromfuture = {
               {
                 "kind": "const",
                 "value": [
-                  99,
-                  111,
-                  117,
-                  110,
-                  116,
-                  101,
-                  114
+                  109,
+                  97,
+                  105,
+                  108
                 ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "account",
+                "path": "user.mail_count",
+                "account": "User"
               }
             ]
           }
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
@@ -209,26 +316,27 @@ export const IDL: Mailfromfuture = {
       ],
       "accounts": [
         {
-          "name": "user",
+          "name": "signer",
           "writable": true,
           "signer": true
         },
         {
-          "name": "mail",
+          "name": "user",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  99,
-                  111,
                   117,
-                  110,
-                  116,
+                  115,
                   101,
                   114
                 ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
               }
             ]
           }
@@ -254,6 +362,19 @@ export const IDL: Mailfromfuture = {
         23,
         235
       ]
+    },
+    {
+      "name": "User",
+      "discriminator": [
+        159,
+        117,
+        95,
+        227,
+        239,
+        151,
+        58,
+        236
+      ]
     }
   ],
   "types": [
@@ -277,6 +398,26 @@ export const IDL: Mailfromfuture = {
           {
             "name": "bump",
             "type": "u8"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "User",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "mail_count",
+            "type": "u64"
           }
         ]
       }
