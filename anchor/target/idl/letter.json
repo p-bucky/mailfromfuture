@@ -1,0 +1,98 @@
+{
+  "address": "HKth2MF3hxUmwBis4xSiw7jC6duX4LQrRYd2JRvQ1Z4n",
+  "metadata": {
+    "name": "letter",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_letter",
+      "discriminator": [
+        105,
+        124,
+        226,
+        159,
+        194,
+        16,
+        57,
+        90
+      ],
+      "accounts": [
+        {
+          "name": "letter_entry",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "title"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "LetterState",
+      "discriminator": [
+        207,
+        59,
+        5,
+        175,
+        83,
+        185,
+        103,
+        225
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "LetterState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
