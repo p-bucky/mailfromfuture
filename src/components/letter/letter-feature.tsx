@@ -20,9 +20,9 @@ export default function LetterFeature() {
           <CreateUser />
           <UserList />
         </div>
-        {/* <LetterCreate /> */}
+        <LetterCreate />
+        <LetterList />
       </AppHero>
-      {/* <LetterList /> */}
     </div>
   ) : (
     <div className="max-w-4xl mx-auto">
