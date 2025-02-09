@@ -39,12 +39,31 @@ export function useLetterProgram() {
     onError: () => toast.error('Failed to initialize account'),
   })
 
+  const createUser = useMutation({
+    mutationKey: ['user', 'create', {cluster}],
+    mutationFn: ({name, bio, sex}) => {
+      return program.methods.createUser(name, bio, sex).rpc()
+    },
+    onSuccess: (signature) => {
+      transactionToast(signature)
+      return accounts.refetch()
+    },
+    onError: () => toast.error("Failed to register user")
+  })
+
+  const users = useQuery({
+    queryKey: ['user', 'all', { cluster }],
+    queryFn: () => program.account.userState.all(),
+  })
+
   return {
     program,
     programId,
     accounts,
     getProgramAccount,
     create,
+    createUser,
+    users
   }
 }
 

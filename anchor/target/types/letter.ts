@@ -62,6 +62,60 @@ export type Letter = {
           "type": "string"
         }
       ]
+    },
+    {
+      "name": "createUser",
+      "discriminator": [
+        108,
+        227,
+        130,
+        130,
+        252,
+        109,
+        75,
+        218
+      ],
+      "accounts": [
+        {
+          "name": "userEntry",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "name"
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "sex",
+          "type": "string"
+        },
+        {
+          "name": "bio",
+          "type": "string"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -76,6 +130,19 @@ export type Letter = {
         185,
         103,
         225
+      ]
+    },
+    {
+      "name": "userState",
+      "discriminator": [
+        72,
+        177,
+        85,
+        249,
+        76,
+        167,
+        186,
+        126
       ]
     }
   ],
@@ -95,6 +162,26 @@ export type Letter = {
           },
           {
             "name": "message",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "userState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "sex",
+            "type": "string"
+          },
+          {
+            "name": "bio",
             "type": "string"
           }
         ]

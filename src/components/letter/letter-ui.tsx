@@ -4,21 +4,21 @@ import { useLetterProgram, useLetterProgramAccount } from './letter-data-access'
 import { useWallet } from '@solana/wallet-adapter-react'
 
 export function LetterCreate() {
-  const { create } = useLetterProgram();
-  const { publicKey } = useWallet();
-  const [title, setTitle] = useState("");
-  const [message, setMessage] = useState("");
+  const { create } = useLetterProgram()
+  const { publicKey } = useWallet()
+  const [title, setTitle] = useState('')
+  const [message, setMessage] = useState('')
 
-  const isFormValid = title.trim() !== "" && message.trim() !== "";
+  const isFormValid = title.trim() !== '' && message.trim() !== ''
 
   const handleSubmit = () => {
     if (publicKey && isFormValid) {
-      create.mutateAsync({ title, message, owner: publicKey });
+      create.mutateAsync({ title, message })
     }
-  };
+  }
 
   if (!publicKey) {
-    return <p>Connect your wallet</p>;
+    return <p>Connect your wallet</p>
   }
 
   return (
@@ -42,10 +42,10 @@ export function LetterCreate() {
         onClick={handleSubmit}
         disabled={create.isPending || !isFormValid}
       >
-        Create Letter {create.isPending && "..."}
+        Create Letter {create.isPending && '...'}
       </button>
     </div>
-  );
+  )
 }
 
 export function LetterList() {
@@ -93,11 +93,7 @@ function LetterCard({ account }: { account: PublicKey }) {
   ) : (
     <div className="card card-bordered border-base-300 border-4 text-neutral-content">
       <div className="card-body items-center text-center">
-        <div className="space-y-6">
-        {accountQuery.data?.title}
-
-    
-        </div>
+        <div className="space-y-6">{accountQuery.data?.title}</div>
       </div>
     </div>
   )

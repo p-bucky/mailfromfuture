@@ -4,6 +4,7 @@ import { WalletButton } from '../solana/solana-provider'
 import { AppHero, ellipsify } from '../ui/ui-layout'
 import { useLetterProgram } from './letter-data-access'
 import { LetterCreate, LetterList } from './letter-ui'
+import { CreateUser, UserList } from './user-ui'
 
 export default function LetterFeature() {
   const { publicKey } = useWallet()
@@ -11,18 +12,17 @@ export default function LetterFeature() {
 
   return publicKey ? (
     <div>
-      <AppHero
-        title="Letter"
-        subtitle={
-          'Create a new account by clicking the "Create" button. The state of a account is stored on-chain and can be manipulated by calling the program\'s methods (increment, decrement, set, and close).'
-        }
-      >
+      <AppHero title="Letter" subtitle={''}>
         <p className="mb-6">
           <ExplorerLink path={`account/${programId}`} label={ellipsify(programId.toString())} />
         </p>
-        <LetterCreate />
+        <div className='flex'>
+          <CreateUser />
+          <UserList />
+        </div>
+        {/* <LetterCreate /> */}
       </AppHero>
-      <LetterList />
+      {/* <LetterList /> */}
     </div>
   ) : (
     <div className="max-w-4xl mx-auto">
